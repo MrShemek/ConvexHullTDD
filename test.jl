@@ -11,4 +11,11 @@ facts("Validate convex_hull function arguments") do
   @fact main([(1.23, 5.55)]) --> "Please provide array of tuples where each element is Int64"
 end
 
+# Test 2
+# If the number of points is smaller than 3, then return the input
+facts("Return input when it contains less than 3 points") do
+  @fact convex_hull([(0,0)]) --> [(0,0)]
+  @fact convex_hull([(0,1),(0,2)]) --> [(0,1),(0,2)]
+end
+
 println("All tests passed")
