@@ -18,4 +18,12 @@ facts("Return input when it contains less than 3 points") do
   @fact convex_hull([(0,1),(0,2)]) --> [(0,1),(0,2)]
 end
 
+# Test 3
+# Detect direction based on the three points
+facts("Detect direction based on three points") do
+  @fact counter_clockwise((0,1), (1,1),  (2,2))   > 0 --> true
+  @fact counter_clockwise((0,1), (-1,-1),(-2,-2)) < 0 --> true
+  @fact counter_clockwise((0,1), (0,2),  (0,3))   --> 0
+end
+
 println("All tests passed")
