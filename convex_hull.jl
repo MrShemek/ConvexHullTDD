@@ -15,3 +15,7 @@ function convex_hull(points::Array{Tuple{Int64,Int64},1})
     return points
   end
 end
+
+function counter_clockwise(p1, p2, p3)
+  return ((p2[1] - p1[1]) * (p3[2] - p1[2])) - ((p2[2] - p1[2]) * (p3[1] - p1[1]))
+end
