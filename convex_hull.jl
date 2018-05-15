@@ -10,6 +10,8 @@ function main(points)
   end
 end
 
-function convex_hull(x::Array{Tuple{Int64,Int64},1})
-
+function convex_hull(points::Array{Tuple{Int64,Int64},1})
+  if size(points, 1) < 3
+    return points
+  end
 end
