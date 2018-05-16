@@ -26,4 +26,10 @@ facts("Detect direction based on three points") do
   @fact counter_clockwise((0,1), (0,2),  (0,3))   --> 0
 end
 
+# Test 4
+facts("Generates array of points and returns it") do
+  @fact size(generate_points(10, -30, 30),1) == 10 --> true
+  @fact typeof(generate_points(10,-30,30)) == Array{Any,1} --> true
+end
+
 println("All tests passed")
