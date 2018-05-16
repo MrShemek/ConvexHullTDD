@@ -32,4 +32,28 @@ facts("Generates array of points and returns it") do
   @fact typeof(generate_points(10,-30,30)) == Array{Any,1} --> true
 end
 
+# Test 5
+# Check if the convex hull part is build correctly
+
+# general case:
+input1 = [(2,3),(3,0),(6,6),(5,2),(5,4),(1,1),(4,5)]
+# a case with collinear point:
+input2 = [(2,3),(3,0),(6,6),(3,4),(5,2),(5,4),(1,1),(4,5)]
+
+# sorted imputs
+sorted_input1 = sort!(union(input1), alg = HeapSort)
+sorted_input2 = sort!(union(input2), alg = HeapSort)
+
+# result array
+result1 = []
+result2 = []
+
+build_convex_hull_part!(result1, sorted_input1)
+build_convex_hull_part!(result2, sorted_input2)
+
+facts("Checking build_convex_hull_part method") do 
+    @fact result1 --> [(1,1),(2,3),(4,5),(6,6)]
+    @fact result2 --> [(1,1),(2,3),(4,5),(6,6)]
+end
+
 println("All tests passed")

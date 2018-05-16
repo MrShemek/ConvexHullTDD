@@ -1,3 +1,5 @@
+using SortingAlgorithms
+
 function main(points)
   try
     convex_hull(points)
@@ -14,6 +16,8 @@ function convex_hull(points::Array{Tuple{Int64,Int64},1})
   if size(points, 1) < 3
     return points
   end
+
+
 end
 
 function counter_clockwise(p1, p2, p3)
@@ -28,3 +32,4 @@ function generate_points(number_of_points, range_min, range_max)
   end
   return points
 end  
+
