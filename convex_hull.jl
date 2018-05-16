@@ -33,3 +33,14 @@ function generate_points(number_of_points, range_min, range_max)
   return points
 end  
 
+function build_convex_hull_part!(hull_points, points_to_check)
+  for i = 1:length(points_to_check)
+    point = points_to_check[i]
+
+    while length(hull_points) > 1 && counter_clockwise(hull_points[end-1], hull_points[end], point) >= 0
+      pop!(hull_points)
+    end
+
+    push!(hull_points, point)
+  end
+end
