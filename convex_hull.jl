@@ -2,11 +2,24 @@ using SortingAlgorithms
 
 function main(points)
   try
-    result = convex_hull!(points)
-    println("Calculated convex hull points:")
-    for point in result
-      println("(", point[1], ",", point[2], ")")
+    ch_points = []
+    ch_points = convex_hull!(points)
+
+    output = [[],[],[],[]]
+
+    for ch_point in ch_points
+      push!(output[1], ch_point[1])
+      push!(output[2], ch_point[2])
+
+      deleteat!(points, findfirst(points, ch_point))
     end
+    
+    for point in points 
+      push!(output[3], point[1])
+      push!(output[4], point[2])
+    end
+
+    return output
   catch e
     if isa(e, MethodError)
       return "Please provide array of tuples where each element is Int64"
@@ -52,7 +65,8 @@ function counter_clockwise(p1, p2, p3)
 end
 
 function generate_points(number_of_points, range_min, range_max)
-  points = []
+  points = [(0,0)]
+  pop!(points)
   for i = 1:number_of_points
     generated_point = (rand(range_min:range_max), rand(range_min:range_max))
     push!(points, generated_point)

@@ -29,7 +29,7 @@ end
 # Test 4
 facts("Generates array of points and returns it") do
   @fact size(generate_points(10, -30, 30),1) == 10 --> true
-  @fact typeof(generate_points(10,-30,30)) == Array{Any,1} --> true
+  @fact typeof(generate_points(10,-30,30)) == Array{Tuple{Int64,Int64},1} --> true
 end
 
 # Test 5
